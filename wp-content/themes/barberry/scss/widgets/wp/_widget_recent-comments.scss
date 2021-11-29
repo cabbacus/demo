@@ -1,0 +1,49 @@
+@mixin widget_recent_comments() {
+  .wp-block-latest-comments__comment {
+    color: #333;
+    position: relative;
+    font-size: 94%;
+    line-height: 1.6;
+    margin-bottom: rem-calc(20);
+    padding-left: rem-calc(26);
+    &::marker {
+      display: none;
+    }
+
+    &:before {
+      color: #333;
+      font-size: 16px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      @include barberry-icon('\ea28');
+    }
+
+    .wp-block-latest-comments__comment-meta {
+      margin-bottom: 0;
+    }
+
+    .wp-block-latest-comments__comment-date {
+      margin-bottom: 0;
+    }
+
+    .comment-author-link,
+    .wp-block-latest-comments__comment-author {
+      a {
+        font-size: 94%;
+      }
+
+      & + a {
+        font-style: normal;
+        color: #000;
+        font-weight: 500;
+        line-height: 1.4;
+        display: block !important;
+        margin-bottom: 0;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}

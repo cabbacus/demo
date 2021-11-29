@@ -1,0 +1,21 @@
+@mixin widget_categories() {
+  @include widget_dropdown();
+
+  ul {
+    &.wp-block-categories {
+      li {
+        margin-bottom: rem-calc(4);
+
+        a {
+          font-size: 94%;
+          font-weight: 600;
+          opacity: 0.5;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

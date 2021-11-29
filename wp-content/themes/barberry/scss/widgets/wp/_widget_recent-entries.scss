@@ -1,0 +1,45 @@
+@mixin widget_recent_entries() {
+  ul.wp-block-latest-posts.wp-block-latest-posts__list {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      position: relative;
+      display: block;
+      margin-bottom: rem-calc(24);
+      padding-left: rem-calc(26);
+      line-height: 1.2;
+
+      &:before {
+        color: #333;
+        font-size: 16px;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        @include barberry-icon('\ea27');
+      }
+
+      a {
+        font-size: 94%;
+        line-height: 1.4;
+        font-weight: 500;
+        color: #000;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      .post-date {
+        color: #333;
+        font-size: 80%;
+        display: block;
+        margin-top: rem-calc(4);
+      }
+
+      .wp-block-latest-posts__post-author {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

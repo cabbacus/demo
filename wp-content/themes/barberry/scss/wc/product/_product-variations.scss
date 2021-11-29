@@ -1,0 +1,725 @@
+body.woocommerce {
+  &.single-product,
+  #barberry_woocommerce_quickview {
+    form.variations_form {
+      table {
+        border: none;
+
+        tbody {
+          border: none;
+
+          tr {
+            border: none;
+            background-color: transparent;
+            // display: flex;
+            // align-items: center;
+            // margin-bottom: 15px;
+
+            td {
+              padding: 0;
+              padding-bottom: 10px;
+
+              @include breakpoint(320px down) {
+                display: block;
+              }
+
+              &.label {
+                // flex-basis: 25%;
+                // width: max-content;
+                display: table-cell;
+                background: transparent;
+                label {
+                  padding: 17px 30px 16px 0;
+                  font-size: 18px;
+
+                  &:after {
+                    content: ':';
+                    margin-left: 2px;
+                  }
+
+                  @include breakpoint(small only) {
+                    padding-right: 20px;
+                  }
+                  @include breakpoint(320px down) {
+                    padding: 0;
+                  }
+                }
+              }
+
+              &.value {
+                vertical-align: middle;
+                position: relative;
+                padding-left: 5px;
+                width: 100%;
+
+                @include breakpoint(small only) {
+                  padding-right: 0;
+                }
+                @include breakpoint(320px down) {
+                  padding-left: 0;
+                }
+
+                .select2 {
+                  display: inline-block;
+                  // max-width: 75%;
+                  border-color: #000;
+                  @include breakpoint(small only) {
+                    max-width: rem-calc(250);
+                  }
+                  @include breakpoint(320px down) {
+                    margin-top: 10px;
+                  }
+
+                  .select2-selection__placeholder {
+                    color: #000 !important;
+                  }
+                }
+              }
+            }
+
+            &:last-child {
+              td {
+                padding-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .select2 {
+        margin-bottom: 0;
+      }
+
+      .single_variation_wrap {
+        .woocommerce-variation-description {
+          p {
+            font-size: 18px;
+          }
+        }
+
+        .woocommerce-variation-price {
+          .price {
+            .amount {
+              font-size: 30px;
+            }
+
+            del {
+              span.amount {
+                font-size: 95%;
+              }
+              .woocommerce-Price-amount:before {
+                width: 100%;
+                position: absolute;
+                content: '';
+                right: 0;
+                top: 50%;
+                height: 0px;
+                border-bottom: 1px solid #f9423a;
+                opacity: 0.7;
+                transform: rotate(-15deg);
+              }
+            }
+
+            ins {
+              margin-left: rem-calc(5);
+              color: #f9423a;
+              text-decoration: none;
+              line-height: 1;
+            }
+          }
+        }
+
+        .woocommerce-variation-availability {
+          margin-bottom: 20px;
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0;
+            &.in-stock {
+              color: #85ab69;
+            }
+            &.out-of-stock {
+              color: #da4343;
+            }
+          }
+
+          .barberry-single-product-stock {
+            margin-top: 0;
+            .stock-sold,
+            .barberry-product-stock-progress {
+              display: none;
+            }
+            .in-stock {
+              position: relative;
+              display: block;
+              &:before {
+                background-color: #85ab69;
+                content: '';
+                width: 7px;
+                height: 7px;
+                margin-right: 0.5rem;
+                margin-bottom: 0.1rem;
+                display: inline-block;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+
+      &:not(.barberry-selected) {
+        .single_variation_wrap {
+          .barberry-reset-variations {
+            display: none;
+          }
+        }
+      }
+
+      .single_variation_wrap {
+        .barberry-reset-variations {
+          animation: fadeIn 0.3s ease;
+          margin-top: -30px;
+          margin-bottom: 20px;
+          display: block;
+          .reset_variations {
+            display: inline-block !important;
+            visibility: visible !important;
+            position: relative;
+            padding-left: 20px;
+            margin-left: 0px;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: rem-calc(11);
+            line-height: rem-calc(11);
+            color: inherit;
+            text-transform: uppercase;
+
+            @include breakpoint(small only) {
+              margin-left: 0;
+              display: block !important;
+              margin-top: 20px;
+              position: relative;
+            }
+
+            &:hover {
+              opacity: 0.6;
+            }
+
+            &:before {
+              position: absolute;
+              left: 0;
+              top: -4px;
+              width: 10px;
+              height: 10px;
+              font-size: 16px;
+              @include barberry-icon('\ea2a');
+            }
+          }
+        }
+      }
+    }
+
+    .select2-results__option:last-of-type {
+      padding-bottom: 0;
+    }
+
+    .woocommerce-variation {
+      @include breakpoint(530px down) {
+        text-align: center;
+      }
+    }
+
+    .woocommerce-variation-add-to-cart {
+      display: inline-block;
+      @include breakpoint(530px down) {
+        justify-content: center;
+      }
+
+      .barberry-buy-now {
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
+      &.woocommerce-variation-add-to-cart-disabled {
+        .barberry-buy-now {
+          margin-left: -8px;
+          cursor: not-allowed;
+          border-width: 1px;
+          border-color: #e1e1e1;
+          background-color: #fff;
+          color: #000;
+          opacity: 0.25;
+          @include transition(opacity 0.3s);
+
+          &:before {
+            display: none;
+          }
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+
+        .button {
+          &:hover {
+            opacity: 0.25;
+          }
+        }
+      }
+    }
+
+    .woocommerce-variation-add-to-cart.woocommerce-variation-add-to-cart-disabled
+      .button:hover {
+      opacity: 0.25 !important;
+    }
+
+    #wc-stripe-payment-request-wrapper {
+      width: 100%;
+      clear: none !important;
+      display: inline-block;
+    }
+
+    .product_summary_bottom_inner {
+      padding-top: rem-calc(30);
+      @include breakpoint(530px down) {
+        text-align: center;
+      }
+
+      small {
+        font-size: rem-calc(16);
+      }
+
+      .dokan-report-abuse-button {
+        display: inline-block;
+        font-weight: 400;
+        padding-left: rem-calc(24);
+        font-size: rem-calc(16);
+        line-height: rem-calc(16);
+        position: relative;
+        i {
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: -2px;
+          left: 0;
+          &:before {
+            @include barberry-icon('\ea47');
+            font-size: rem-calc(16);
+          }
+        }
+
+        &.working {
+          i {
+            @include loader(16px, 16px);
+            &:before {
+              display: none;
+            }
+            &:after {
+              border-top-color: #000;
+              z-index: 4;
+              position: absolute;
+              top: -2px;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      .yith-wcwl-add-to-wishlist {
+        display: inline-block;
+        margin-top: 0;
+        margin-right: rem-calc(20);
+
+        & .clear,
+        & + .clear {
+          display: none;
+        }
+
+        .yith-wcwl-add-button {
+          .blockUI {
+            display: none !important;
+          }
+
+          > img {
+            display: none !important;
+          }
+          .add_to_wishlist {
+            position: relative;
+            font-weight: 400;
+            font-size: rem-calc(16);
+            line-height: rem-calc(16);
+            padding-left: rem-calc(24);
+            display: flex;
+            align-items: center;
+
+            .yith-wcwl-icon {
+              display: none;
+            }
+
+            &:before {
+              opacity: 1;
+              @include barberry-icon('\ea06');
+              margin-right: rem-calc(8);
+              font-size: rem-calc(16);
+              position: absolute;
+              top: -2px;
+              left: 0;
+            }
+
+            &:hover {
+              &:before {
+                animation: beat 0.6s ease-in-out infinite;
+              }
+            }
+          }
+
+          &.loading {
+            .add_to_wishlist {
+              @include loader(16px, 16px);
+              &:after {
+                border-top-color: #000;
+                z-index: 4;
+                position: absolute;
+                top: -2px;
+                left: 0;
+              }
+              &:before {
+                opacity: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .yith-wcwl-wishlistaddedbrowse,
+      .yith-wcwl-wishlistexistsbrowse {
+        display: flex;
+        align-items: center;
+
+        span.feedback {
+          display: none;
+        }
+
+        a {
+          position: relative;
+          font-weight: 400;
+          font-size: rem-calc(16);
+          line-height: rem-calc(16);
+          padding-left: rem-calc(24);
+          display: flex;
+          align-items: center;
+
+          &:before {
+            opacity: 1;
+            @include barberry-icon('\ea05');
+            margin-right: rem-calc(8);
+            font-size: rem-calc(16);
+            position: absolute;
+            top: -2px;
+            left: 0;
+          }
+
+          &:hover {
+            &:before {
+              animation: beat 0.6s ease-in-out infinite;
+            }
+          }
+        }
+      }
+
+      // Yith Compare
+
+      .compare-btn {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        margin-right: rem-calc(15);
+
+        a.compare-link {
+          position: relative;
+          font-weight: 400;
+          font-size: rem-calc(16);
+          line-height: rem-calc(16);
+          padding-left: rem-calc(24);
+          display: flex;
+          align-items: center;
+
+          .blockUI {
+            display: none !important;
+          }
+
+          &:before {
+            opacity: 1;
+            @include barberry-icon('\ea41');
+            margin-right: rem-calc(8);
+            font-size: rem-calc(16);
+            position: absolute;
+            top: -2px;
+            left: 0;
+          }
+
+          &:hover {
+            &:before {
+              animation: rotateIn 0.6s ease-in-out infinite;
+            }
+          }
+
+          &.loading {
+            @include loader(16px, 16px);
+            &:after {
+              border-top-color: #000;
+              z-index: 4;
+              position: absolute;
+              top: -2px;
+              left: 0;
+            }
+            &:before {
+              opacity: 0;
+            }
+            &.added {
+              &:after {
+                display: none;
+              }
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .single_variation_wrap {
+      .woocommerce-variation {
+        .woocommerce-variation-price {
+          .price {
+            .subscription-details,
+            .subscription-details .amount {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.product {
+    form.cart.swatches-support {
+      .tawcvs-swatches:not(.barberry-attr-wrap-clone) {
+        display: flex !important;
+        // max-width: 75%;
+        display: inline-block;
+        overflow: visible;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+
+        @include breakpoint(small only) {
+          max-width: 100%;
+        }
+
+        .swatch-item-wrapper {
+          position: relative;
+          display: inline-flex;
+          margin: 5px 17px 5px 0px !important;
+        }
+        .swatch {
+          width: 24px !important;
+          height: 24px !important;
+          line-height: 1;
+          margin: 0;
+          opacity: 1;
+          border: none;
+          align-items: center;
+
+          // Color
+
+          &.swatch-color {
+            width: 24px !important;
+            height: 24px !important;
+            &.swatch-shape-edge,
+            &.swatch-shape-rounded {
+              border-radius: 50%;
+            }
+            &:hover {
+              @include transform(scale(1.4));
+            }
+
+            &:before {
+              opacity: 0;
+              margin: 0;
+              z-index: 4;
+              @include transform(none);
+              background-color: #fff;
+              border: none;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              content: '';
+              width: 6px;
+              height: 6px;
+              transition: all 0.3s;
+            }
+
+            &.selected {
+              @include transform(scale(1.4));
+              @include box-shadow(none);
+              &:after {
+                display: none !important;
+              }
+
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+
+          // Image
+
+          &.swatch-image {
+            width: 34px !important;
+            height: 34px !important;
+            font-size: 0;
+            padding: 0;
+            &.swatch-shape-edge,
+            &.swatch-shape-rounded,
+            &.swatch-shape-edge img,
+            &.swatch-shape-rounded img {
+              border-radius: 50%;
+            }
+            &:before {
+              opacity: 0;
+              margin: 0;
+              z-index: 4;
+              @include transform(none);
+              background-color: #fff;
+              border: none;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              content: '';
+              width: 6px;
+              height: 6px;
+              transition: all 0.3s;
+            }
+
+            &.selected {
+              @include transform(scale(1.3));
+              @include box-shadow(none);
+
+              &:before {
+                opacity: 1;
+              }
+            }
+          }
+
+          // Label
+
+          &.swatch-label {
+            width: auto;
+            height: auto;
+            padding: 16px 12px;
+            border-radius: 0px !important;
+            margin: 0 !important;
+            font-size: 16px;
+            line-height: 1;
+            display: inline-flex;
+            border: none !important;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) inset;
+            color: rgba(0, 0, 0, 0.5);
+            background-color: #fff;
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+
+            .swatch__tooltip,
+            & ~ .swatch__tooltip {
+              display: none;
+            }
+
+            &:before {
+              display: none !important;
+            }
+            &:hover,
+            &.selected {
+              color: #000;
+              box-shadow: 0 0 0 1px #000 inset;
+            }
+
+            &.selected {
+              font-weight: 600;
+              box-shadow: 0 0 0 2px #000 inset;
+            }
+
+            &.out-of {
+              cursor: not-allowed;
+              pointer-events: none;
+              // background: rgba(0,0,0,0.05);
+              color: #999;
+              border-color: rgba(0, 0, 0, 0.1);
+            }
+          }
+        }
+
+        // Swatch Tooltip
+
+        .swatch__tooltip {
+          max-width: 15rem;
+          padding: 7px 12px;
+          transition: all 0.3s ease;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1;
+          border-radius: 0;
+          background-color: #000;
+          top: -20px;
+          bottom: auto;
+          transform: translate3d(-50%, 0, 0);
+
+          @include breakpoint(large) {
+            animation: shop_tooltip_hover_out 0.3s;
+          }
+
+          &:after {
+            position: absolute;
+            bottom: -16px;
+            right: auto;
+            left: 50%;
+            margin-left: 0;
+            transform: translate3d(-50%, 0, 0);
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px;
+            border-color: transparent transparent transparent;
+            border-top-color: #0a0a0a;
+            background: transparent;
+          }
+        }
+
+        .swatch-item-wrapper:hover {
+          .swatch__tooltip {
+            @include breakpoint(large) {
+              animation: shop_tooltip_hover_in 0.3s;
+              animation-fill-mode: forwards;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body.woocommerce.single-product {
+  #barberry_woocommerce_quickview {
+    .tawcvs-swatches {
+      max-width: 100%;
+    }
+  }
+}
